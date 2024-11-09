@@ -13,7 +13,7 @@ const Categoria = sequelize.define(
       type: DataTypes.STRING,
     },
   },
-  { timestamps: false }
+  { timestamps: false, tableName: "categorias" }
 );
 
 module.exports = Categoria;

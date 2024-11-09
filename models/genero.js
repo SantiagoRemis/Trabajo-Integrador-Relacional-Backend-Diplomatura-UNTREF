@@ -14,6 +14,6 @@ const Genero = sequelize.define(
       allowNull: false,
     },
   },
-  { timestamps: false }
+  { timestamps: false, tableName: "generos" }
 );
 module.exports = Genero;

@@ -1,4 +1,3 @@
-const sequelize = require("../conexion/database");
 const Contenido = require("./contenido");
 const Genero = require("./genero");
 const Categoria = require("./categoria");
@@ -12,8 +11,12 @@ const models = {
   Categoria,
   Actor,
   ContenidoActor,
+  ContenidoGenero,
 };
-
+Genero.belongsToMany(Contenido, {
+  through: ContenidoGenero,
+  foreignKey: "genero_id",
+});
 Actor.belongsToMany(Contenido, {
   through: ContenidoActor,
   foreignKey: "actor_id",
@@ -30,4 +33,13 @@ Contenido.belongsToMany(Genero, {
   through: ContenidoGenero,
   foreignKey: "contenido_id",
 });
+
+Contenido.belongsTo(Categoria, {
+  foreignKey: "categoria_id",
+});
+Categoria.hasMany(Contenido, {
+  foreignKey: "categoria_id",
+  as: "contenidos",
+});
+
 module.exports = models;

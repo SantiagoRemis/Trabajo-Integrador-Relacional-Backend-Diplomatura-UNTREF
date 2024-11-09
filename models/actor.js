@@ -14,7 +14,7 @@ const Actor = sequelize.define(
       type: DataTypes.STRING,
     },
   },
-  { timestamps: false }
+  { timestamps: false, tableName: "actores" }
 );
 
 // Exportar el modelo

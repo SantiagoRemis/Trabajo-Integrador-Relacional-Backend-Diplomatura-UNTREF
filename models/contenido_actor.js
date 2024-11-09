@@ -29,14 +29,4 @@ const ContenidoActor = sequelize.define(
   }
 );
 
-Contenido.belongsToMany(Actor, {
-  through: ContenidoActor,
-  foreignKey: "contenido_id",
-});
-
-Actor.belongsToMany(Contenido, {
-  through: ContenidoActor,
-  foreignKey: "actor_id",
-});
-
 module.exports = ContenidoActor;
