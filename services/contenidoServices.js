@@ -71,6 +71,13 @@ const addActorToContenido = async (contenido_id, actor_id) => {
   return contenido;
 };
 
+const addGeneroToContenido = async (contenido_id, genero_id) => {
+  const contenido = await Contenido.findByPk(contenido_id);
+  if (!contenido) return null;
+  contenido.addGenero(genero_id);
+  return contenido;
+};
+
 module.exports = {
   getAllContenido,
   getByIdContenido,
@@ -78,4 +85,5 @@ module.exports = {
   createContenido,
   updateContenido,
   addActorToContenido,
+  addGeneroToContenido,
 };

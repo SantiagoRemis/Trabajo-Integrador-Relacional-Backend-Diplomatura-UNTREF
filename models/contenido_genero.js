@@ -22,17 +22,9 @@ const ContenidoGenero = sequelize.define(
     },
   },
   {
-    tableName: "contenido_genero",
+    tableName: "contenido_generos",
     timestamps: false,
   }
 );
-ContenidoGenero.belongsToMany(Contenido, {
-  through: ContenidoGenero,
-  foreignKey: "contenido_id",
-});
-Contenido.belongsToMany(ContenidoGenero, {
-  through: ContenidoGenero,
-  foreignKey: "genero_id",
-});
 
 module.exports = ContenidoGenero;

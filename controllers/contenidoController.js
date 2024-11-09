@@ -130,6 +130,31 @@ const addActorToContenido = async (req, res) => {
   }
 };
 
+const addGeneroToContenido = async (req, res) => {
+  try {
+    const { contenido_id } = req.body;
+    const { genero_id } = req.body;
+    const contenido = await contenidoServices.addGeneroToContenido(
+      contenido_id,
+      genero_id
+    );
+    if (!contenido) {
+      res.status(404).json({
+        message: "El contenido no fue encontrado",
+      });
+      return;
+    }
+    console.log(contenido);
+
+    res.status(200).json({ message: "genero agregado" });
+  } catch (error) {
+    res.status(500).json({
+      error: "Error al actualizar el contenido",
+      description: error.message,
+    });
+  }
+};
+
 module.exports = {
   getAllContenido,
   getByIdContenido,
@@ -137,4 +162,5 @@ module.exports = {
   createContenido,
   updateContenido,
   addActorToContenido,
+  addGeneroToContenido,
 };

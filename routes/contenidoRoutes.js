@@ -10,4 +10,5 @@ router.delete("/contenido/:id", contenidoController.deleteContenido);
 router.put("/contenido/:id", contenidoController.updateContenido);
 
 router.post("/actor", contenidoController.addActorToContenido);
+router.post("/genero", contenidoController.addGeneroToContenido);
 module.exports = router;
