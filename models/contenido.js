@@ -35,8 +35,8 @@ const Contenido = sequelize.define(
     },
   },
   {
-    tableName: "contenidos", // Nombre de la tabla
-    timestamps: false, // Si no usas timestamps en la tabla
+    tableName: "contenidos",
+    timestamps: false,
   }
 );
 

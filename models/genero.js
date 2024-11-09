@@ -1,4 +1,4 @@
-const sequelize = require("../conexion/database"); // Importa la conexión a la base de datos
+const sequelize = require("../conexion/database");
 const { DataTypes } = require("sequelize");
 
 const Genero = sequelize.define(
@@ -15,7 +15,5 @@ const Genero = sequelize.define(
     },
   },
   { timestamps: false }
-); // Si no tienes las columnas createdAt/updatedAt, pon 'timestamps: false'
-
-// Exportar el modelo para que sea accesible en otros archivos
+);
 module.exports = Genero;

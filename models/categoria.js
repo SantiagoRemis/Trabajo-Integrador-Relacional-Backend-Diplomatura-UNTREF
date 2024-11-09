@@ -1,4 +1,4 @@
-const sequelize = require("../conexion/database"); // Asegúrate de usar tu archivo de conexión
+const sequelize = require("../conexion/database");
 const DataTypes = require("sequelize");
 
 const Categoria = sequelize.define(
@@ -14,6 +14,6 @@ const Categoria = sequelize.define(
     },
   },
   { timestamps: false }
-); // Si no usas createdAt/updatedAt
+);
 
 module.exports = Categoria;

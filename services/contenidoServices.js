@@ -36,9 +36,36 @@ const createContenido = async (
   });
 };
 
+const updateContenido = async (
+  id,
+  poster,
+  titulo,
+  resumen,
+  temporadas,
+  trailer,
+  categoria_id
+) => {
+  return await Contenido.update(
+    {
+      poster,
+      titulo,
+      resumen,
+      temporadas,
+      trailer,
+      categoria_id,
+    },
+    {
+      where: {
+        id,
+      },
+    }
+  );
+};
+
 module.exports = {
   getAllContenido,
   getByIdContenido,
   deleteContenido,
   createContenido,
+  updateContenido,
 };

@@ -7,5 +7,5 @@ router.get("/contenido", contenidoController.getAllContenido);
 router.get("/contenido/:id", contenidoController.getByIdContenido);
 router.post("/contenido/", contenidoController.createContenido);
 router.delete("/contenido/:id", contenidoController.deleteContenido);
-
+router.put("/contenido/:id", contenidoController.updateContenido);
 module.exports = router;

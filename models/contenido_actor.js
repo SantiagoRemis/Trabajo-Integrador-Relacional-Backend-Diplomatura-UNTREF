@@ -8,8 +8,7 @@ const ContenidoActor = sequelize.define(
   {
     contenido_id: {
       type: DataTypes.INTEGER,
-      // primaryKey: true,
-      // allowNull: false,
+
       references: {
         model: Contenido,
         key: "cotenido_id",
@@ -17,8 +16,7 @@ const ContenidoActor = sequelize.define(
     },
     actor_id: {
       type: DataTypes.INTEGER,
-      // primaryKey: true,
-      // allowNull: false,
+
       references: {
         model: Actor,
         key: "actor_id",

@@ -1,6 +1,5 @@
-// models/actor.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../conexion/database"); // Tu archivo de conexión
+const sequelize = require("../conexion/database");
 
 // Definir el modelo Actor
 const Actor = sequelize.define(
@@ -15,7 +14,7 @@ const Actor = sequelize.define(
       type: DataTypes.STRING,
     },
   },
-  { timestamps: false } // Si no usas createdAt/updatedAt
+  { timestamps: false }
 );
 
 // Exportar el modelo

@@ -78,9 +78,39 @@ const createContenido = async (req, res) => {
   }
 };
 
+const updateContenido = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { poster, titulo, resumen, temporadas, trailer, categoria_id } =
+      req.body;
+    const contenido = await contenidoServices.updateContenido(
+      id,
+      poster,
+      titulo,
+      resumen,
+      temporadas,
+      trailer,
+      categoria_id
+    );
+    if (!contenido) {
+      res.status(404).json({
+        message: "El contenido no fue encontrado",
+      });
+      return;
+    }
+    res.status(200).json({ message: "contenido actualizado" });
+  } catch (error) {
+    res.status(500).json({
+      error: "Error al actualizar el contenido",
+      description: error.message,
+    });
+  }
+};
+
 module.exports = {
   getAllContenido,
   getByIdContenido,
   deleteContenido,
   createContenido,
+  updateContenido,
 };
