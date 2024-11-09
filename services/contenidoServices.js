@@ -62,10 +62,20 @@ const updateContenido = async (
   );
 };
 
+const addActorToContenido = async (contenido_id, actor_id) => {
+  console.log(contenido_id, actor_id);
+  const contenido = await Contenido.findByPk(contenido_id);
+  console.log(contenido);
+  if (!contenido) return null;
+  contenido.addActor(actor_id);
+  return contenido;
+};
+
 module.exports = {
   getAllContenido,
   getByIdContenido,
   deleteContenido,
   createContenido,
   updateContenido,
+  addActorToContenido,
 };

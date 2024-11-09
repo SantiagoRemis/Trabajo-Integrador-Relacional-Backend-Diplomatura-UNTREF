@@ -29,11 +29,12 @@ const ContenidoActor = sequelize.define(
   }
 );
 
-ContenidoActor.belongsToMany(Contenido, {
+Contenido.belongsToMany(Actor, {
   through: ContenidoActor,
   foreignKey: "contenido_id",
 });
-ContenidoActor.belongsToMany(Actor, {
+
+Actor.belongsToMany(Contenido, {
   through: ContenidoActor,
   foreignKey: "actor_id",
 });

@@ -107,10 +107,34 @@ const updateContenido = async (req, res) => {
   }
 };
 
+const addActorToContenido = async (req, res) => {
+  try {
+    const { contenido_id } = req.body;
+    const { actor_id } = req.body;
+    const contenido = await contenidoServices.addActorToContenido(
+      contenido_id,
+      actor_id
+    );
+    if (!contenido) {
+      res.status(404).json({
+        message: "El contenido no fue encontrado",
+      });
+      return;
+    }
+    res.status(200).json({ message: "actor agregado" });
+  } catch (error) {
+    res.status(500).json({
+      error: "Error al actualizar el contenido",
+      description: error.message,
+    });
+  }
+};
+
 module.exports = {
   getAllContenido,
   getByIdContenido,
   deleteContenido,
   createContenido,
   updateContenido,
+  addActorToContenido,
 };
