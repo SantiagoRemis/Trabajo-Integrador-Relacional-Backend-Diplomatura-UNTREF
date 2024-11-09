@@ -1,6 +1,6 @@
 const { where } = require("sequelize");
-// const { Contenido } = require("../models");
-const Contenido = require("../models/contenido");
+const models = require("../models/index.js");
+const { Contenido } = models;
 
 const getAllContenido = async () => {
   return await Contenido.findAll();
