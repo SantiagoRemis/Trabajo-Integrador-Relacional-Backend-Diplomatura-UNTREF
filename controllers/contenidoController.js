@@ -56,8 +56,31 @@ const deleteContenido = async (req, res) => {
   }
 };
 
+const createContenido = async (req, res) => {
+  const { poster, titulo, resumen, temporadas, trailer, categoria_id } =
+    req.body;
+
+  try {
+    const contenido = await contenidoServices.createContenido(
+      poster,
+      titulo,
+      resumen,
+      temporadas,
+      trailer,
+      categoria_id
+    );
+    res.status(201).json(contenido);
+  } catch (error) {
+    res.status(500).json({
+      error: "Error al crear el contenido",
+      description: error.message,
+    });
+  }
+};
+
 module.exports = {
   getAllContenido,
   getByIdContenido,
   deleteContenido,
+  createContenido,
 };

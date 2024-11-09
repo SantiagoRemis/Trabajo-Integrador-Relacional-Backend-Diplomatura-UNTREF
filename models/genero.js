@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../conexion/database"); // Importa la conexión a la base de datos
+const { DataTypes } = require("sequelize");
 
 const Genero = sequelize.define(
   "Genero",

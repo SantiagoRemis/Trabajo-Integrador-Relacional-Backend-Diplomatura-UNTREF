@@ -1,27 +1,23 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../conexion/database").sequelize;
+const sequelize = require("../conexion/database");
 const Contenido = require("./contenido");
 const Genero = require("./genero");
 
 const ContenidoGenero = sequelize.define(
   "ContenidoGenero",
   {
-    id_contenido: {
+    contenido_id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
       references: {
         model: Contenido,
-        key: "id",
+        key: "contenido_id",
       },
     },
-    id_genero: {
+    genero_id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
       references: {
         model: Genero,
-        key: "id_genero",
+        key: "genero_id",
       },
     },
   },
@@ -30,5 +26,13 @@ const ContenidoGenero = sequelize.define(
     timestamps: false,
   }
 );
+ContenidoGenero.belongsToMany(Contenido, {
+  through: ContenidoGenero,
+  foreignKey: "contenido_id",
+});
+Contenido.belongsToMany(ContenidoGenero, {
+  through: ContenidoGenero,
+  foreignKey: "genero_id",
+});
 
 module.exports = ContenidoGenero;

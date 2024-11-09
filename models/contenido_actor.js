@@ -1,27 +1,27 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../conexion/database").sequelize;
+const sequelize = require("../conexion/database");
 const Contenido = require("./contenido");
 const Actor = require("./actor");
 
 const ContenidoActor = sequelize.define(
   "ContenidoActor",
   {
-    id_contenido: {
+    contenido_id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
+      // primaryKey: true,
+      // allowNull: false,
       references: {
         model: Contenido,
-        key: "id",
+        key: "cotenido_id",
       },
     },
-    id_actor: {
+    actor_id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
+      // primaryKey: true,
+      // allowNull: false,
       references: {
         model: Actor,
-        key: "id_actor",
+        key: "actor_id",
       },
     },
   },
@@ -30,5 +30,14 @@ const ContenidoActor = sequelize.define(
     timestamps: false,
   }
 );
+
+ContenidoActor.belongsToMany(Contenido, {
+  through: ContenidoActor,
+  foreignKey: "contenido_id",
+});
+ContenidoActor.belongsToMany(Actor, {
+  through: ContenidoActor,
+  foreignKey: "actor_id",
+});
 
 module.exports = ContenidoActor;

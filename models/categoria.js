@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../conexion/database"); // Asegúrate de usar tu archivo de conexión
+const DataTypes = require("sequelize");
 
 const Categoria = sequelize.define(
   "Categoria",
